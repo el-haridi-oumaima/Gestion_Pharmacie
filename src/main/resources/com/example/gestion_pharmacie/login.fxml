@@ -6,16 +6,21 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.gestion_pharmacie.LoginController">
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.14" fx:controller="com.example.gestion_pharmacie.LoginController" stylesheets="@login.css">
 
   <padding>
-    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
+   <Label fx:id="messageLabel1" text="Bienvenue dans votre système de gestion de pharmacie">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
 
-  <TextField fx:id="loginField" promptText="Login"/>
-  <PasswordField fx:id="passwordField" promptText="Password"/>
-  <Button text="Se connecter" onAction="#handleLogin"/>
-  <Label fx:id="messageLabel"/>
+  <TextField fx:id="loginField" promptText="Login" />
+  <PasswordField fx:id="passwordField" promptText="Password" />
+  <Button onAction="#handleLogin" text="Se connecter" />
+  <Label fx:id="messageLabel" textFill="red" />
 </VBox>

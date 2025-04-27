@@ -1,0 +1,57 @@
+/* Styling pour le fond de la page */
+.root {
+    -fx-background-color: #f5f5f5; /* couleur de fond douce */
+    -fx-padding: 20px;
+}
+
+/* Conteneur VBox */
+.vbox {
+    -fx-alignment: center; /* Centrer tous les éléments */
+    -fx-spacing: 15px; /* Espacement entre les éléments */
+    -fx-background-color: white; /* Fond blanc */
+    -fx-padding: 20px;
+    -fx-border-radius: 10px; /* Coins arrondis */
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 2); /* Ombre légère */
+}
+
+/* Label de bienvenue */
+#messageLabel1 {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50; /* Couleur de texte gris foncé */
+    -fx-text-alignment: center;
+}
+
+/* Champ de texte (login) */
+#loginField {
+    -fx-padding: 10px;
+    -fx-background-color: #ecf0f1; /* Couleur de fond clair */
+    -fx-border-radius: 5px;
+    -fx-border-color: #bdc3c7; /* Bordure grise */
+    -fx-pref-width: 200px; /* Largeur préférée */
+}
+
+/* Champ de mot de passe */
+#passwordField {
+    -fx-padding: 10px;
+    -fx-background-color: #ecf0f1; /* Couleur de fond clair */
+    -fx-border-radius: 5px;
+    -fx-border-color: #bdc3c7; /* Bordure grise */
+    -fx-pref-width: 200px; /* Largeur préférée */
+}
+
+/* Bouton de connexion */
+#handleLogin {
+    -fx-background-color: #3498db; /* Couleur bleu */
+    -fx-text-fill: white; /* Texte blanc */
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand; /* Curseur de main */
+}
+
+/* Message d'erreur */
+#messageLabel {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}
