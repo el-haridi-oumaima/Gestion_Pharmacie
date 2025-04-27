@@ -1,5 +1,7 @@
 package com.example.gestion_pharmacie;
 
+import com.example.gestion_pharmacie.service.UserService;
+
 public class AddUserMain {
     public static void main(String[] args) {
         UserService userService = new UserService();

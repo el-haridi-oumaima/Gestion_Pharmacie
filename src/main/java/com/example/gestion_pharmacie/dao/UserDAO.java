@@ -1,9 +1,11 @@
-package com.example.gestion_pharmacie;
+package com.example.gestion_pharmacie.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.example.gestion_pharmacie.database.DButil;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAO {

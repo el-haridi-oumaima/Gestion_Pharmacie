@@ -1,5 +1,6 @@
-package com.example.gestion_pharmacie;
+package com.example.gestion_pharmacie.controller;
 
+import com.example.gestion_pharmacie.service.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -43,7 +44,7 @@ public class LoginController {
 
     private void goToDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/dashboard.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) loginField.getScene().getWindow();
             stage.setScene(new Scene(root));

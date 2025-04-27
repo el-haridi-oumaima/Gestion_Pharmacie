@@ -1,5 +1,6 @@
-package com.example.gestion_pharmacie;
+package com.example.gestion_pharmacie.service;
 
+import com.example.gestion_pharmacie.dao.UserDAO;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserService {

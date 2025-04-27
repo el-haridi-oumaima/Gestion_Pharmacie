@@ -1,4 +1,4 @@
-package com.example.gestion_pharmacie;
+package com.example.gestion_pharmacie.model;
 
 public class User {
     private int id;
