@@ -10,6 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
+
 
 public class LoginController {
 
@@ -21,6 +25,29 @@ public class LoginController {
 
     @FXML
     private Label messageLabel;
+
+    @FXML
+    private ImageView logoImage;
+
+    @FXML
+    public void initialize() {
+        // Method 1: Load image from project resources
+        Image logo = new Image(getClass().getResourceAsStream("/com/example/gestion_pharmacie/img/logo.png"));
+
+        // Method 2: Load image from file system (less recommended)
+        // Image logo = new Image("file:///path/to/your/logo.png");
+
+        logoImage.setImage(logo);
+
+        // Optional: If you want the image to be circular
+        // Create a circle clip
+        Circle clip = new Circle(40, 40, 40);
+        logoImage.setClip(clip);
+    }
+
+
+
+
 
     private UserService userService = new UserService(); // make sure you have UserService ready!
 

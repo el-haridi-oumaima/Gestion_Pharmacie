@@ -1,0 +1,132 @@
+/* dashboard.css */
+
+/* Root styles and variables */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #ffffff;
+    -fx-dark-green: #005500;
+    -fx-light-green: #99bb99;
+}
+
+/* BorderPane styling */
+.border-pane {
+    -fx-background-color: #f8f8f8;
+}
+
+/* Left sidebar styling */
+VBox.sidebar {
+    -fx-background-color: -fx-dark-green;
+    -fx-background-radius: 0 10 10 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.sidebar Label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.sidebar .title {
+    -fx-font-size: 22px;
+    -fx-padding: 0 0 15 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 2);
+}
+
+.sidebar .profile-container {
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-alignment: center;
+}
+
+.profile-pic {
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-width: 2;
+    -fx-border-color: -fx-light-green;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.sidebar Button {
+    -fx-background-color: -fx-light-green;
+    -fx-text-fill: -fx-dark-green;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
+
+.sidebar Button:hover {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+/* Top bar styling */
+HBox.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 20;
+}
+
+.notification-btn {
+    -fx-background-color: -fx-light-green;
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-dark-green;
+    -fx-cursor: hand;
+}
+
+.notification-btn:hover {
+    -fx-background-color: derive(-fx-light-green, 10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Center content styling */
+.content {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+
+.welcome-label {
+    -fx-text-fill: -fx-dark-green;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 20 0;
+}
+
+.stats-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 8, 0, 0, 0);
+    -fx-border-radius: 10;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 1;
+    -fx-padding: 15;
+}
+
+.stats-panel Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-dark-green;
+}
+
+.action-button {
+    -fx-background-color: -fx-dark-green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: derive(-fx-dark-green, 10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}

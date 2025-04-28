@@ -1,57 +1,120 @@
-/* Styling pour le fond de la page */
+/* login.css */
+
+/* Root styles and variables */
 .root {
-    -fx-background-color: #f5f5f5; /* couleur de fond douce */
-    -fx-padding: 20px;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-background-color: #99bb99;
+    -fx-dark-green: #005500;
+    -fx-light-green: #99bb99;
+}
+/* StackPane - background of the whole login page */
+.stack-pane {
+    -fx-background-color: #A2D3C2; /* Pastel green */
 }
 
-/* Conteneur VBox */
+
+/* VBox container */
 .vbox {
-    -fx-alignment: center; /* Centrer tous les éléments */
-    -fx-spacing: 15px; /* Espacement entre les éléments */
-    -fx-background-color: white; /* Fond blanc */
-    -fx-padding: 20px;
-    -fx-border-radius: 10px; /* Coins arrondis */
-    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 2); /* Ombre légère */
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 30px;
+    -fx-spacing: 15px;
+    -fx-max-width: 400px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 0);
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
 }
 
-/* Label de bienvenue */
+/* Welcome label */
 #messageLabel1 {
+    -fx-text-fill: -fx-dark-green;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50; /* Couleur de texte gris foncé */
     -fx-text-alignment: center;
+    -fx-wrap-text: true;
+    -fx-padding: 0 0 10 0;
 }
 
-/* Champ de texte (login) */
+/* Login field */
 #loginField {
-    -fx-padding: 10px;
-    -fx-background-color: #ecf0f1; /* Couleur de fond clair */
-    -fx-border-radius: 5px;
-    -fx-border-color: #bdc3c7; /* Bordure grise */
-    -fx-pref-width: 200px; /* Largeur préférée */
-}
-
-/* Champ de mot de passe */
-#passwordField {
-    -fx-padding: 10px;
-    -fx-background-color: #ecf0f1; /* Couleur de fond clair */
-    -fx-border-radius: 5px;
-    -fx-border-color: #bdc3c7; /* Bordure grise */
-    -fx-pref-width: 200px; /* Largeur préférée */
-}
-
-/* Bouton de connexion */
-#handleLogin {
-    -fx-background-color: #3498db; /* Couleur bleu */
-    -fx-text-fill: white; /* Texte blanc */
+    -fx-background-color: #f8f8f8;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
     -fx-font-size: 14px;
-    -fx-padding: 10px 20px;
-    -fx-border-radius: 5px;
-    -fx-cursor: hand; /* Curseur de main */
+    -fx-padding: 10 15;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 40px;
 }
 
-/* Message d'erreur */
+#loginField:focused {
+    -fx-border-color: -fx-light-green;
+    -fx-background-color: white;
+}
+
+/* Password field */
+#passwordField {
+    -fx-background-color: #f8f8f8;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-font-size: 14px;
+    -fx-padding: 10 15;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 40px;
+}
+
+#passwordField:focused {
+    -fx-border-color: -fx-light-green;
+    -fx-background-color: white;
+}
+
+/* Login button - targeting by type since ID doesn't match */
+Button {
+    -fx-background-color: -fx-dark-green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 40px;
+}
+
+Button:hover {
+    -fx-background-color: derive(-fx-dark-green, 10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+/* Error message */
 #messageLabel {
-    -fx-text-fill: red;
-    -fx-font-size: 12px;
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 0 0;
+}
+
+/* Logo placeholder - if you want to add a logo */
+.logo {
+    -fx-background-color: -fx-light-green;
+    -fx-background-radius: 50;
+    -fx-min-width: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-max-height: 80px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+/* Replace the Circle logo styling with this */
+.logo-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+    /* The styling below helps if your image is not already circular */
+    -fx-background-radius: 40px;
+    /* Only needed if you want to add a border */
+    -fx-border-color: -fx-light-green;
+    -fx-border-radius: 40px;
+    -fx-border-width: 2;
 }

@@ -5,22 +5,40 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/17.0.14"
+           fx:controller="com.example.gestion_pharmacie.controller.LoginController"
+           stylesheets="@../css/login.css">
 
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.14" fx:controller="com.example.gestion_pharmacie.controller.LoginController" stylesheets="@../css/login.css">
+    <VBox fx:id="vbox"
+          alignment="CENTER"
+          spacing="20.0"
+          prefWidth="400"
+          prefHeight="500"
+          maxWidth="400"
+          maxHeight="500"
+          styleClass="vbox">
+        <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+        </padding>
 
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
-   <Label fx:id="messageLabel1" text="Bienvenue dans votre système de gestion de pharmacie">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Label>
+        <ImageView fx:id="logoImage" fitHeight="80" fitWidth="80" styleClass="logo-image" />
 
-  <TextField fx:id="loginField" promptText="Login" />
-  <PasswordField fx:id="passwordField" promptText="Password" />
-  <Button onAction="#handleLogin" text="Se connecter" />
-  <Label fx:id="messageLabel" textFill="red" />
-</VBox>
+        <Label fx:id="messageLabel1" text="Bienvenue dans votre système de gestion de pharmacie">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+
+        <TextField fx:id="loginField" promptText="Login" />
+        <PasswordField fx:id="passwordField" promptText="Password" />
+        <Button onAction="#handleLogin" text="Se connecter" />
+        <Label fx:id="messageLabel" textFill="red" />
+    </VBox>
+
+</StackPane>
+
