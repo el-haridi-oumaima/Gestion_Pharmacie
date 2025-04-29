@@ -1,110 +1,153 @@
 package com.example.gestion_pharmacie.controller;
 
+import com.example.gestion_pharmacie.model.Fournisseur;
 import com.example.gestion_pharmacie.model.Stock;
+import com.example.gestion_pharmacie.service.FournisseurService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class StockDialogController {
 
     @FXML
-    private TextField txtMedicament;
+    private TextField txtNomMedicament;
 
     @FXML
-    private TextField txtFournisseur;
+    private ComboBox<Fournisseur> cmbFournisseur;
 
     @FXML
     private TextField txtPrix;
 
     @FXML
-    private DatePicker dpDateEntree;
+    private DatePicker datePicker;
 
     @FXML
     private TextField txtQuantite;
 
-    private boolean modeAjout = true;
-
-    private int idStock = -1; // Identifiant pour la modification
+    private Stock stock;
+    private boolean isAddMode = true;
+    private final FournisseurService fournisseurService = new FournisseurService();
 
     @FXML
     public void initialize() {
-        configurerValidationChamps();
-        dpDateEntree.setValue(LocalDate.now());
+        // Set today's date as default for datePicker
+        datePicker.setValue(LocalDate.now());
+
+        // Configure the ComboBox to display Fournisseur names
+        configureComboBox();
+
+        // Load all fournisseurs into the ComboBox
+        loadFournisseurs();
     }
 
-    private void configurerValidationChamps() {
-        txtPrix.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
-                txtPrix.setText(oldValue);
+    private void configureComboBox() {
+        // Set the cell factory to display only the fournisseur name in the dropdown list
+        cmbFournisseur.setCellFactory(lv -> new ListCell<Fournisseur>() {
+            @Override
+            protected void updateItem(Fournisseur item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? null : item.getNom());
             }
         });
 
-        txtQuantite.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                txtQuantite.setText(oldValue);
+        // Set converter to display and use the Fournisseur name in the ComboBox
+        cmbFournisseur.setConverter(new StringConverter<Fournisseur>() {
+            @Override
+            public String toString(Fournisseur fournisseur) {
+                return fournisseur == null ? null : fournisseur.getNom();
+            }
+
+            @Override
+            public Fournisseur fromString(String string) {
+                // This method is called when the user types in the ComboBox
+                // We don't need to implement it for our purpose
+                return null;
             }
         });
+    }
+
+    private void loadFournisseurs() {
+        try {
+            // Get all fournisseurs from the service
+            List<Fournisseur> fournisseurs = fournisseurService.getAllFournisseurs();
+
+            // Convert to ObservableList and set as items in the ComboBox
+            ObservableList<Fournisseur> fournisseursList = FXCollections.observableArrayList(fournisseurs);
+            cmbFournisseur.setItems(fournisseursList);
+
+            // Select the first item if available
+            if (!fournisseursList.isEmpty()) {
+                cmbFournisseur.setValue(fournisseursList.get(0));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the error appropriately
+        }
     }
 
     public void setModeAjout() {
-        this.modeAjout = true;
-        txtMedicament.setEditable(true);
-        effacerChamps();
+        this.isAddMode = true;
+        this.stock = new Stock();
     }
 
     public void setStock(Stock stock) {
-        this.modeAjout = false;
-        this.idStock = stock.getIdStock(); // ✅ Sauvegarde de l'ID pour modification
+        this.isAddMode = false;
+        this.stock = stock;
 
-        txtMedicament.setText(stock.getNomMedicament());
-        txtMedicament.setEditable(false); // Nom non modifiable
+        // Fill the form with stock data
+        if (stock != null) {
+            txtNomMedicament.setText(stock.getNomMedicament());
 
-        txtFournisseur.setText(stock.getFournisseur());
-        txtPrix.setText(String.valueOf(stock.getPrix()));
-        dpDateEntree.setValue(stock.getDateEntree());
-        txtQuantite.setText(String.valueOf(stock.getQuantite()));
+            // If in edit mode, disable nomMedicament field as it's the identifier
+            if (!isAddMode) {
+                txtNomMedicament.setEditable(false);
+            }
+
+            // Set the fournisseur in the ComboBox
+            if (stock.getFournisseur() != null) {
+                // Try to find the fournisseur in the ComboBox items
+                for (Fournisseur fournisseur : cmbFournisseur.getItems()) {
+                    if (fournisseur.getNom().equals(stock.getFournisseurNom())) {
+                        cmbFournisseur.setValue(fournisseur);
+                        break;
+                    }
+                }
+            }
+
+            txtPrix.setText(String.valueOf(stock.getPrix()));
+            datePicker.setValue(stock.getDateEntree());
+            txtQuantite.setText(String.valueOf(stock.getQuantite()));
+        }
     }
 
     public Stock getStock() {
-        String nomMedicament = txtMedicament.getText().trim();
-        String fournisseur = txtFournisseur.getText().trim();
-        double prix = Double.parseDouble(txtPrix.getText().trim());
-        LocalDate dateEntree = dpDateEntree.getValue();
-        int quantite = Integer.parseInt(txtQuantite.getText().trim());
+        // Get data from form fields
+        String nomMedicament = txtNomMedicament.getText();
+        Fournisseur fournisseur = cmbFournisseur.getValue();
+        double prix = Double.parseDouble(txtPrix.getText());
+        LocalDate dateEntree = datePicker.getValue();
+        int quantite = Integer.parseInt(txtQuantite.getText());
 
-        Stock stock = new Stock(nomMedicament, fournisseur, prix, dateEntree, quantite);
-
-        if (!modeAjout) {
-            stock.setIdStock(this.idStock); // ✅ Réinjecte l'ID pour la modification
+        // Update the stock object
+        if (isAddMode) {
+            stock = new Stock(nomMedicament, fournisseur, prix, dateEntree, quantite);
+        } else {
+            stock.setNomMedicament(nomMedicament);
+            stock.setFournisseur(fournisseur);
+            stock.setPrix(prix);
+            stock.setDateEntree(dateEntree);
+            stock.setQuantite(quantite);
         }
 
         return stock;
-    }
-
-    private void effacerChamps() {
-        txtMedicament.clear();
-        txtFournisseur.clear();
-        txtPrix.clear();
-        dpDateEntree.setValue(LocalDate.now());
-        txtQuantite.clear();
-    }
-
-    public boolean validerChamps() {
-        if (txtMedicament.getText().trim().isEmpty() ||
-                txtFournisseur.getText().trim().isEmpty() ||
-                txtPrix.getText().trim().isEmpty() ||
-                dpDateEntree.getValue() == null ||
-                txtQuantite.getText().trim().isEmpty()) {
-            return false;
-        }
-
-        try {
-            Double.parseDouble(txtPrix.getText().trim());
-            Integer.parseInt(txtQuantite.getText().trim());
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }

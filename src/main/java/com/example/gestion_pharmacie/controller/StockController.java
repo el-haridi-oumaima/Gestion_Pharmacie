@@ -1,7 +1,9 @@
 package com.example.gestion_pharmacie.controller;
 
 import com.example.gestion_pharmacie.dao.StockDAO;
+import com.example.gestion_pharmacie.dao.FournisseurDAO;
 import com.example.gestion_pharmacie.model.Stock;
+import com.example.gestion_pharmacie.model.Fournisseur;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,8 +14,10 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 public class StockController {
@@ -43,18 +47,23 @@ public class StockController {
     private Button btnAjouter;
 
     private final StockDAO stockDAO = new StockDAO();
+    private final FournisseurDAO fournisseurDAO = new FournisseurDAO();
     private ObservableList<Stock> stockList;
+    private ObservableList<Fournisseur> fournisseurList;
 
     @FXML
     public void initialize() {
         stockList = FXCollections.observableArrayList();
+        loadFournisseurs();
 
+        // Configure table columns
         colMedicament.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNomMedicament()));
-        colFournisseur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFournisseur()));
+        colFournisseur.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFournisseurNom()));
         colPrix.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
         colDateEntree.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDateEntree()));
         colQuantite.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getQuantite()).asObject());
 
+        // Format date column
         colDateEntree.setCellFactory(column -> new TableCell<>() {
             private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -65,8 +74,20 @@ public class StockController {
             }
         });
 
+        // Add buttons to actions column
         ajouterColonneActions();
+
+        // Load data from database
         chargerDonnees();
+    }
+
+    private void loadFournisseurs() {
+        try {
+            List<Fournisseur> fournisseurs = fournisseurDAO.getAllFournisseurs();
+            fournisseurList = FXCollections.observableArrayList(fournisseurs);
+        } catch (SQLException e) {
+            afficherErreur("Erreur lors du chargement des fournisseurs", e);
+        }
     }
 
     private void chargerDonnees() {
@@ -113,6 +134,8 @@ public class StockController {
 
             StockDialogController controller = loader.getController();
             controller.setModeAjout();
+
+            // The StockDialogController will load fournisseurs automatically in its initialize method
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(dialogPane);
