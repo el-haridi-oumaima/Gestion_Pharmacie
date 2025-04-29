@@ -1,14 +1,19 @@
 package com.example.gestion_pharmacie.controller;
 
+import com.example.gestion_pharmacie.dao.StockDAO;
+import com.example.gestion_pharmacie.model.Stock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class DashboardController {
 
@@ -24,6 +29,7 @@ public class DashboardController {
     @FXML
     public void initialize() {
         fournisseurButton.setOnAction(this::handleFournisseurButton);
+<<<<<<< HEAD
         // If you prefer to wire up the logout button here instead of in FXML:
         // logoutButton.setOnAction(this::handleLogout);
     }
@@ -48,21 +54,25 @@ public class DashboardController {
             // You might want to display an error message to the user
         }
     }
+=======
+        afficherAlertesStocksFaibles();
+    }
+
+
+
+>>>>>>> devSalama
 
     @FXML
     private void handleFournisseurButton(ActionEvent event) {
         try {
-            // Load the fournisseurs interface (replace 'fournisseurs.fxml' with the correct name of your fxml file)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/fournisseur.fxml"));
             Parent root = loader.load();
 
-            // Create new stage (window)
             Stage stage = new Stage();
             stage.setTitle("Gestion des Fournisseurs");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Optionally, close the current dashboard window:
             Stage currentStage = (Stage) fournisseurButton.getScene().getWindow();
             currentStage.close();
 
@@ -82,7 +92,6 @@ public class DashboardController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Fermer la fenêtre actuelle si nécessaire
             Stage currentStage = (Stage) stockButton.getScene().getWindow();
             currentStage.close();
 
@@ -90,4 +99,23 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 }
+=======
+
+    @FXML
+    private VBox lowStockBox;
+
+    private final StockDAO stockDAO = new StockDAO();
+
+    public void afficherAlertesStocksFaibles() {
+        List<Stock> stocksFaibles = stockDAO.recupererStocksFaibles();
+
+        for (Stock stock : stocksFaibles) {
+            Label alert = new Label("⚠️ Le stock du médicament \"" + stock.getNomMedicament() + "\" est bas (quantité : " + stock.getQuantite() + ")");
+            alert.getStyleClass().add("alert-label");
+            lowStockBox.getChildren().add(alert);
+        }
+    }
+}
+>>>>>>> devSalama
