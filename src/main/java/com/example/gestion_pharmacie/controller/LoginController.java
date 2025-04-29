@@ -72,12 +72,19 @@ public class LoginController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/dashboard.fxml"));
             Parent root = loader.load();
+
+            // Access the controller and set the user login
+            DashboardController controller = loader.getController();
+            controller.setUserLogin(loginField.getText());
+
             Stage stage = (Stage) loginField.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setTitle("Dashboard");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
             messageLabel.setText("Erreur lors du chargement du tableau de bord.");
         }
     }
+
 }

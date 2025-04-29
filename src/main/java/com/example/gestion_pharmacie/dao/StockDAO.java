@@ -176,4 +176,30 @@ public class StockDAO {
 
         return null;
     }
+    public List<Stock> recupererStocksFaibles() {
+        List<Stock> stocksFaibles = new ArrayList<>();
+        String sql = "SELECT * FROM stock WHERE quantite < 3";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int idStock = rs.getInt("idStock");
+                String nomMedicament = rs.getString("nomMedicament");
+                String fournisseur = rs.getString("fournisseur");
+                double prix = rs.getDouble("prix");
+                LocalDate dateEntree = rs.getDate("dateEntree").toLocalDate();
+                int quantite = rs.getInt("quantite");
+
+                Stock stock = new Stock(idStock, nomMedicament, fournisseur, prix, dateEntree, quantite);
+                stocksFaibles.add(stock);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return stocksFaibles;
+    }
+
 }
