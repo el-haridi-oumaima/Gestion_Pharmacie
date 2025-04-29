@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 
-
-
-<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.gestion_pharmacie.controller.FournisseurController" stylesheets="@../css/fourniseur.css" prefWidth="1280.0" prefHeight="720.0">
-
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.gestion_pharmacie.controller.FournisseurController"
+            stylesheets="@../css/fourniseur.css"
+            prefWidth="1280.0" prefHeight="720.0">
     <center>
         <VBox spacing="20.0" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml" styleClass="content">
 
@@ -28,22 +28,16 @@
 
             <!-- Spacer to separate HBox from TableView -->
 
-
             <!-- TableView -->
-            <TableView fx:id="fournisseurTable" prefWidth="700.0" prefHeight="400.0">
+            <TableView fx:id="fournisseurTable" prefWidth="900.0" prefHeight="400.0">
                 <columns>
-                    <TableColumn fx:id="idColumn" text="ID" prefWidth="100.0" />
-                    <TableColumn fx:id="nameColumn" text="Nom" prefWidth="200.0" />
-                    <TableColumn fx:id="addressColumn" text="Adresse" prefWidth="200.0" />
-                    <TableColumn fx:id="phoneColumn" text="Téléphone" prefWidth="200.0" />
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="80.0" />
+                    <TableColumn fx:id="nameColumn" text="Nom" prefWidth="180.0" />
+                    <TableColumn fx:id="addressColumn" text="Adresse" prefWidth="180.0" />
+                    <TableColumn fx:id="phoneColumn" text="Téléphone" prefWidth="180.0" />
+                    <TableColumn fx:id="actionColumn" text="Actions" prefWidth="250.0" />
                 </columns>
             </TableView>
-
         </VBox>
-
     </center>
-
 </BorderPane>
-
-
-

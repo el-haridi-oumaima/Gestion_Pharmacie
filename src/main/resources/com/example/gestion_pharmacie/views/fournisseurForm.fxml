@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.gestion_pharmacie.controller.FournisseurFormController" stylesheets="@../css/fournisseurForm.css" prefWidth="400.0" prefHeight="300.0" spacing="10" alignment="CENTER">
-    <Label text="Ajouter un fournisseur" />
-    <TextField fx:id="nomField" promptText="Nom du fournisseur" />
-    <TextField fx:id="adresseField" promptText="Adresse" />
-    <TextField fx:id="telephoneField" promptText="Numéro de téléphone" />
-    <Button fx:id="submitButton" text="Ajouter" onAction="#handleSubmit" />
-    <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel" />
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.gestion_pharmacie.controller.FournisseurFormController"
+      stylesheets="@../css/fournisseurForm.css"
+      prefWidth="600.0" prefHeight="400.0"
+      spacing="15" alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestion des fournisseurs" styleClass="form-title"/>
+
+    <VBox spacing="10">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Nom:" prefWidth="100"/>
+            <TextField fx:id="nomField" promptText="Nom du fournisseur" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Adresse:" prefWidth="100"/>
+            <TextField fx:id="adresseField" promptText="Adresse" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Tel:" prefWidth="100"/>
+            <TextField fx:id="telephoneField" promptText="Numéro de téléphone" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </VBox>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="submitButton" text="Ajouter" onAction="#handleSubmit" styleClass="submit-button"/>
+        <Button fx:id="cancelButton" text="Annuler" onAction="#handleCancel" styleClass="cancel-button"/>
+    </HBox>
 </VBox>
