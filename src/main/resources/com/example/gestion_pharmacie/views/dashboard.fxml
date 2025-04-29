@@ -67,7 +67,13 @@
       </Pane>
 
       <HBox spacing="30.0" alignment="CENTER">
-        <Button text="Stock" prefWidth="120.0" prefHeight="40.0" styleClass="action-button" />
+        <Button fx:id="stockButton" text="Stock"
+                onAction="#handleStockButton"
+                prefWidth="200" prefHeight="50"
+                styleClass="action-button"/>
+
+
+
         <Button fx:id="fournisseurButton" layoutX="200.0" layoutY="150.0" text="Fournisseur"
                 onAction="#handleFournisseurButton" prefWidth="200" prefHeight="50"/>      </HBox>
     </VBox>

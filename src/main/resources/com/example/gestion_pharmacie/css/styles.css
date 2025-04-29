@@ -151,3 +151,12 @@ HBox Label {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+.action-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}

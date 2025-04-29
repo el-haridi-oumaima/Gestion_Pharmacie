@@ -40,4 +40,27 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private Button stockButton;
+
+    @FXML
+    private void handleStockButton(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/StockView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Gestion du Stock");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre actuelle si nécessaire
+            Stage currentStage = (Stage) stockButton.getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
