@@ -73,7 +73,6 @@
                 styleClass="action-button"/>
 
 
-
         <Button fx:id="fournisseurButton" layoutX="200.0" layoutY="150.0" text="Fournisseur"
                 onAction="#handleFournisseurButton" prefWidth="200" prefHeight="50"/>      </HBox>
     </VBox>
