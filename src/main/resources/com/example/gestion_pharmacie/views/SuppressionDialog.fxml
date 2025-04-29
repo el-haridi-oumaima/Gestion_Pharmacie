@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="400.0">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <headerText>
+        Confirmer la suppression
+    </headerText>
+
+    <content>
+        <VBox spacing="10">
+            <Label text="Êtes-vous sûr de vouloir supprimer ce médicament du stock?"/>
+            <Label fx:id="lblMedicament" style="-fx-font-weight: bold"/>
+        </VBox>
+    </content>
+
+    <buttonTypes>
+        <ButtonType fx:constant="YES"/>
+        <ButtonType fx:constant="NO"/>
+    </buttonTypes>
+</DialogPane>
