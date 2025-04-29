@@ -36,7 +36,7 @@
         <Label text="Profile" />
       </VBox>
 
-      <Button text="Logout" />
+      <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" />
     </VBox>
   </left>
 
@@ -62,10 +62,9 @@
         </font>
       </Label>
 
-      <VBox spacing="10.0" styleClass="stats-panel" fx:id="lowStockBox" prefWidth="400.0" prefHeight="150.0">
-        <Label text="⚠️Médicaments en rupture de stock" styleClass="section-title" />
-      </VBox>
-
+      <Pane prefWidth="400.0" prefHeight="150.0" styleClass="stats-panel">
+        <Label text="Statistics" layoutX="20.0" layoutY="20.0" />
+      </Pane>
 
       <HBox spacing="30.0" alignment="CENTER">
         <Button fx:id="stockButton" text="Stock"

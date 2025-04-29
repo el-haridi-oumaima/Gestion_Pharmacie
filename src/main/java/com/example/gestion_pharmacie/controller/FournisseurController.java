@@ -208,29 +208,4 @@ public class FournisseurController {
             }
         });
     }
-
-
-    @FXML
-
-    private Button btnRetourDashboard;
-
-    @FXML
-    private void handleRetourDashboard() {
-        try {
-            // Charger la vue du dashboard
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/dashboard.fxml"));
-            Parent root = loader.load();
-
-            // Créer une nouvelle scène et l'afficher
-            Stage stage = (Stage) btnRetourDashboard.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Dashboard");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showError("Erreur", "Erreur lors du retour au dashboard.");
-        }
-    }
-
 }

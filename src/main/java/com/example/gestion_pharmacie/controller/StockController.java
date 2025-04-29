@@ -19,6 +19,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+
 
 public class StockController {
 
@@ -79,6 +82,16 @@ public class StockController {
 
         // Load data from database
         chargerDonnees();
+    }
+
+    @FXML
+    private void handleRetourDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/Dashboard.fxml"));
+            tableStock.getScene().setRoot(loader.load());
+        } catch (IOException e) {
+            afficherErreur("Erreur lors du retour au tableau de bord", e);
+        }
     }
 
     private void loadFournisseurs() {
@@ -210,3 +223,5 @@ public class StockController {
         alert.showAndWait();
     }
 }
+
+
