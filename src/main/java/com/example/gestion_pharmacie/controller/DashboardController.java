@@ -16,9 +16,39 @@ public class DashboardController {
     private Button fournisseurButton;
 
     @FXML
+    private Button stockButton;
+
+    @FXML
+    private Button logoutButton; // Add this field to reference the logout button
+
+    @FXML
     public void initialize() {
         fournisseurButton.setOnAction(this::handleFournisseurButton);
+        // If you prefer to wire up the logout button here instead of in FXML:
+        // logoutButton.setOnAction(this::handleLogout);
     }
+
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        try {
+            // Load the login screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/login.fxml"));
+            Parent root = loader.load();
+
+            // Get the current stage from the event source
+            Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            // Set the login scene and show it
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Login");
+            currentStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            // You might want to display an error message to the user
+        }
+    }
+
     @FXML
     private void handleFournisseurButton(ActionEvent event) {
         try {
@@ -40,9 +70,6 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    private Button stockButton;
 
     @FXML
     private void handleStockButton(ActionEvent event) {
