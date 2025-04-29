@@ -130,3 +130,19 @@ HBox.top-bar {
     -fx-background-color: derive(-fx-dark-green, 10%);
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
 }
+
+#fournisseurButton {
+    -fx-background-color: -fx-dark-green;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+#fournisseurButton:hover {
+    -fx-background-color: derive(-fx-dark-green, 10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+

@@ -1,0 +1,68 @@
+/* fournisseurForm.css */
+
+/* VBox container */
+.vbox {
+    -fx-background-color: #ffffff;
+    -fx-padding: 40px;
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 0);
+    -fx-font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+/* Title label */
+.label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #2f855a; /* deep green */
+    -fx-font-weight: bold;
+}
+
+/* TextFields */
+.text-field {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-background-color: #f4f6f8;
+    -fx-border-color: #cbd5e0;
+    -fx-padding: 0 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Focused TextField */
+.text-field:focused {
+    -fx-border-color: #38a169; /* green border when focused */
+    -fx-background-color: #ffffff;
+}
+
+/* Common button styles */
+.button {
+    -fx-background-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+/* Submit Button (Ajouter) */
+#submitButton {
+    -fx-background-color: #38a169; /* green */
+    -fx-text-fill: white;
+}
+
+#submitButton:hover {
+    -fx-background-color: #48bb78; /* lighter green on hover */
+}
+
+/* Cancel Button (Annuler) */
+#cancelButton {
+    -fx-background-color: #e53e3e; /* red */
+    -fx-text-fill: white;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #f56565; /* lighter red on hover */
+}

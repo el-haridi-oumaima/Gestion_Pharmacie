@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+
+
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.gestion_pharmacie.controller.FournisseurController" stylesheets="@../css/fourniseur.css" prefWidth="1280.0" prefHeight="720.0">
+
+    <center>
+        <VBox spacing="20.0" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml" styleClass="content">
+
+            <!-- Title -->
+            <Label text="Fournisseurs" styleClass="welcome-label" />
+
+            <!-- Add new supplier section -->
+            <HBox spacing="10.0" alignment="CENTER">
+                <Label text="Ajouter un nouveau fournisseur"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <!-- Link the button to the handleAddButton method in your controller -->
+                <Button fx:id="addButton" text="Ajouter" styleClass="action-button" onAction="#handleAddButton"/>
+            </HBox>
+
+            <!-- Spacer to separate HBox from TableView -->
+
+
+            <!-- TableView -->
+            <TableView fx:id="fournisseurTable" prefWidth="700.0" prefHeight="400.0">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="100.0" />
+                    <TableColumn fx:id="nameColumn" text="Nom" prefWidth="200.0" />
+                    <TableColumn fx:id="addressColumn" text="Adresse" prefWidth="200.0" />
+                    <TableColumn fx:id="phoneColumn" text="Téléphone" prefWidth="200.0" />
+                </columns>
+            </TableView>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
+
+
+

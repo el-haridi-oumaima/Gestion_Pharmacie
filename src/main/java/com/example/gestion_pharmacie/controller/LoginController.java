@@ -34,8 +34,7 @@ public class LoginController {
         // Method 1: Load image from project resources
         Image logo = new Image(getClass().getResourceAsStream("/com/example/gestion_pharmacie/img/logo.png"));
 
-        // Method 2: Load image from file system (less recommended)
-        // Image logo = new Image("file:///path/to/your/logo.png");
+
 
         logoImage.setImage(logo);
 
