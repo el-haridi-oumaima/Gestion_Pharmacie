@@ -1,6 +1,7 @@
 package com.example.gestion_pharmacie.dao;
 
 import com.example.gestion_pharmacie.database.DButil;
+import com.example.gestion_pharmacie.model.Fournisseur;
 import com.example.gestion_pharmacie.model.Stock;
 
 import java.time.LocalDate;
@@ -14,6 +15,8 @@ public class StockDAO {
         return DButil.getConnection();
     }
 
+    private FournisseurDAO fournisseurDAO = new FournisseurDAO();
+
     public void ajouterStock(Stock stock) {
         String sql = "INSERT INTO stock (nomMedicament, fournisseur, prix, dateEntree, quantite) VALUES (?, ?, ?, ?, ?)";
 
@@ -22,7 +25,7 @@ public class StockDAO {
 
             try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, stock.getNomMedicament());
-                stmt.setString(2, stock.getFournisseur());
+                stmt.setString(2, stock.getFournisseurNom()); // Store the fournisseur name in the database
                 stmt.setDouble(3, stock.getPrix());
                 stmt.setDate(4, Date.valueOf(stock.getDateEntree()));
                 stmt.setInt(5, stock.getQuantite());
@@ -61,10 +64,31 @@ public class StockDAO {
             while (rs.next()) {
                 int idStock = rs.getInt("idStock");
                 String nomMedicament = rs.getString("nomMedicament");
-                String fournisseur = rs.getString("fournisseur");
+                String fournisseurNom = rs.getString("fournisseur");
                 double prix = rs.getDouble("prix");
                 LocalDate dateEntree = rs.getDate("dateEntree").toLocalDate();
                 int quantite = rs.getInt("quantite");
+
+                // Try to find the corresponding Fournisseur object
+                Fournisseur fournisseur = null;
+                try {
+                    // First try to find by name
+                    List<Fournisseur> fournisseurs = fournisseurDAO.getAllFournisseurs();
+                    for (Fournisseur f : fournisseurs) {
+                        if (f.getNom().equals(fournisseurNom)) {
+                            fournisseur = f;
+                            break;
+                        }
+                    }
+
+                    // If not found, create a temporary one with just the name
+                    if (fournisseur == null) {
+                        fournisseur = new Fournisseur(-1, fournisseurNom, "", "");
+                    }
+                } catch (SQLException e) {
+                    // If any error occurs, create a temporary fournisseur with just the name
+                    fournisseur = new Fournisseur(-1, fournisseurNom, "", "");
+                }
 
                 Stock stock = new Stock(idStock, nomMedicament, fournisseur, prix, dateEntree, quantite);
                 stocks.add(stock);
@@ -95,7 +119,7 @@ public class StockDAO {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, stock.getFournisseur());
+            stmt.setString(1, stock.getFournisseurNom()); // Store the fournisseur name
             stmt.setDouble(2, stock.getPrix());
             stmt.setDate(3, Date.valueOf(stock.getDateEntree()));
             stmt.setInt(4, stock.getQuantite());
@@ -118,10 +142,31 @@ public class StockDAO {
 
             if (rs.next()) {
                 int idStock = rs.getInt("idStock");
-                String fournisseur = rs.getString("fournisseur");
+                String fournisseurNom = rs.getString("fournisseur");
                 double prix = rs.getDouble("prix");
                 LocalDate dateEntree = rs.getDate("dateEntree").toLocalDate();
                 int quantite = rs.getInt("quantite");
+
+                // Try to find the corresponding Fournisseur object
+                Fournisseur fournisseur = null;
+                try {
+                    // First try to find by name
+                    List<Fournisseur> fournisseurs = fournisseurDAO.getAllFournisseurs();
+                    for (Fournisseur f : fournisseurs) {
+                        if (f.getNom().equals(fournisseurNom)) {
+                            fournisseur = f;
+                            break;
+                        }
+                    }
+
+                    // If not found, create a temporary one with just the name
+                    if (fournisseur == null) {
+                        fournisseur = new Fournisseur(-1, fournisseurNom, "", "");
+                    }
+                } catch (SQLException e) {
+                    // If any error occurs, create a temporary fournisseur with just the name
+                    fournisseur = new Fournisseur(-1, fournisseurNom, "", "");
+                }
 
                 return new Stock(idStock, nomMedicament, fournisseur, prix, dateEntree, quantite);
             }
@@ -131,32 +176,4 @@ public class StockDAO {
 
         return null;
     }
-
-
-    public List<Stock> recupererStocksFaibles() {
-        List<Stock> stocksFaibles = new ArrayList<>();
-        String sql = "SELECT * FROM stock WHERE quantite < 3";
-
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                int idStock = rs.getInt("idStock");
-                String nomMedicament = rs.getString("nomMedicament");
-                String fournisseur = rs.getString("fournisseur");
-                double prix = rs.getDouble("prix");
-                LocalDate dateEntree = rs.getDate("dateEntree").toLocalDate();
-                int quantite = rs.getInt("quantite");
-
-                Stock stock = new Stock(idStock, nomMedicament, fournisseur, prix, dateEntree, quantite);
-                stocksFaibles.add(stock);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return stocksFaibles;
-    }
-
 }
