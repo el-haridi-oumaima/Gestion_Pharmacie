@@ -11,6 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import java.io.IOException;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -185,5 +192,27 @@ public class StockController {
         alert.setHeaderText(message);
         alert.setContentText(e.getMessage());
         alert.showAndWait();
+    }
+
+
+    @FXML
+    private Button btnRetourDashboard;
+
+    // Méthode pour revenir au dashboard
+    public void handleRetourDashboard(ActionEvent event) {
+
+        // utiliser un nouveau `Scene` ou charger un autre fichier FXML pour afficher le dashboard.
+
+
+        try {
+            // Remplace "/chemin/vers/dashboard.fxml" par le chemin correct de ton fichier FXML pour le dashboard
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestion_pharmacie/views/dashboard.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) btnRetourDashboard.getScene().getWindow();  // Récupère la fenêtre actuelle
+            stage.setScene(scene);  // Change la scène pour afficher le dashboard
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
