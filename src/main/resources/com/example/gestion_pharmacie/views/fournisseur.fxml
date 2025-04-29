@@ -31,7 +31,7 @@
 
             <!-- TableView with fixed width -->
             <TableView fx:id="fournisseurTable" prefWidth="900.0" prefHeight="400.0"
-                       maxWidth="900.0" HBox.hgrow="NEVER">
+                       maxWidth="1000.0" HBox.hgrow="NEVER">
                 <columns>
                     <TableColumn fx:id="idColumn" text="ID" prefWidth="80.0" />
                     <TableColumn fx:id="nameColumn" text="Nom" prefWidth="180.0" />
