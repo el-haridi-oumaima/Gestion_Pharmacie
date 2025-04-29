@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.gestion_pharmacie.controller.StockDialogController"
+            prefWidth="400.0">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <headerText>
+        Ajouter un médicament
+    </headerText>
+
+    <content>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Médicament:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtMedicament" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Fournisseur:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtFournisseur" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Prix:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrix" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Date d'entrée:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="dpDateEntree" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Quantité:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtQuantite" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType fx:constant="OK"/>
+        <ButtonType fx:constant="CANCEL"/>
+    </buttonTypes>
+</DialogPane>
