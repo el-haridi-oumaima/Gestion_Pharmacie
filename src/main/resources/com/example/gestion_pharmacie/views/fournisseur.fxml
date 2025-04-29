@@ -14,7 +14,7 @@
             prefWidth="1280.0" prefHeight="720.0">
     <center>
         <VBox spacing="20.0" alignment="TOP_CENTER" styleClass="content"
-              xmlns:fx="http://javafx.com/fxml" maxWidth="950.0">
+              xmlns:fx="http://javafx.com/fxml" maxWidth="1280.0">
 
             <!-- Title -->
             <Label text="Fournisseurs" styleClass="welcome-label" />
