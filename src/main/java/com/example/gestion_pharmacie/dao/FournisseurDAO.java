@@ -82,6 +82,4 @@ public class FournisseurDAO {
         }
         return null;
     }
-
-
 }

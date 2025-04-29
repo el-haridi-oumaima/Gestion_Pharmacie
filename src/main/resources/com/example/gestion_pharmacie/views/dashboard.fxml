@@ -36,7 +36,7 @@
         <Label text="Profile" />
       </VBox>
 
-      <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" />
+      <Button text="Logout" />
     </VBox>
   </left>
 
