@@ -1,7 +1,6 @@
 # 💊 Pharmacy Management System
 
 <div align="center">
-  <img src="./images/banner.png" alt="Pharmacy Management Banner" width="100%"/>
   
   ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
   ![JavaFX](https://img.shields.io/badge/JavaFX-007396?style=for-the-badge&logo=java&logoColor=white)
@@ -131,7 +130,7 @@ This project is a **Pharmacy Management System** designed to streamline pharmacy
 | Name | Role | GitHub |
 |------|------|--------|
 | **Oumaima EL HARIDI** | Lead Developer | [@el-haridi-oumaima](https://github.com/el-haridi-oumaima) |
-| **Salama LAAMIAR** | Co-Developer | [@laami-ar-salama]([https://github.com/laami-ar-salama](https://github.com/Salamalaamiar)) |
+| **Salama LAAMIAR** | Co-Developer | [@laami-ar-salama](https://github.com/Salamalaamiar) |
 
 </div>
 
