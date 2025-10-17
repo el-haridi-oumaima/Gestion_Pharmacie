@@ -160,7 +160,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 🙏 Acknowledgments
 
-- Thanks to **Mme. HILALI Imane** for guidance and support
+- Thanks to **Mme. HILAL Imane** for guidance and support
 - École des Sciences de l'Information (ESI) for the academic framework
 - JavaFX community for excellent documentation and resources
 
