@@ -129,8 +129,8 @@ This project is a **Pharmacy Management System** designed to streamline pharmacy
 
 | Name | Role | GitHub |
 |------|------|--------|
-| **Oumaima EL HARIDI** | Lead Developer | [@el-haridi-oumaima](https://github.com/el-haridi-oumaima) |
-| **Salama LAAMIAR** | Co-Developer | [@laami-ar-salama](https://github.com/Salamalaamiar) |
+| **Oumaima EL HARIDI** | Developer | [@el-haridi-oumaima](https://github.com/el-haridi-oumaima) |
+| **Salama LAAMIAR** | Developer | [@laami-ar-salama](https://github.com/Salamalaamiar) |
 
 </div>
 
